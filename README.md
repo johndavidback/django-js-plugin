@@ -15,3 +15,7 @@ to make it dynamic or user oriented. We could tack an account number or somethin
 like that onto the request for widget.js for a personal experience. 
 
 It isn't fancy yet, but it offers the basis for a dynamic javascript widget.
+
+Based on
+--------
+This article: http://alexmarandon.com/articles/web_widget_jquery/ by Alex Marandon
