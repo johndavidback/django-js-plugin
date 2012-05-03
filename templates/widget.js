@@ -40,10 +40,20 @@
 
 	function begin() {
 
-		jQuery('#plugin-root').html('Hey there, {{ name }} with account {{ account_id }}');
+        jQuery(document).ready(function($) {
+		    $('#plugin-root').html('Hey there, {{ name }} with account {{ page_id }}');
 
+            $("#plugin-root").append('<a href="#" id="add-click">like?</a>');
+            $("#plugin-root").append('<p id="like-count">{{ likes }}</p>');
+
+            $("#add-click").bind('click', function(event){
+                event.preventDefault();
+                $.post('http://localhost:8000/{{ page_id }}/click/', {}, function(data) {
+                    $("#like-count").html(data.clicks);
+                });
+            });
+        });
 	}
-
 
 })();
 
