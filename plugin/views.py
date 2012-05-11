@@ -31,6 +31,35 @@ def widget(request):
 
     return response
 
+def widget2(request):
+    """
+    This widget is going to scan the dom for certain classes and use
+    those to render things.
+    """
+
+    data = render_to_string('widget2.js', {
+
+    })
+
+    return HttpResponse(data, content_type='text/javascript')
+
+@csrf_exempt
+def load_image(request):
+
+    if request.method == 'POST':
+
+        size = request.POST.get('size', '100')
+
+        image_src = 'http://placekitten.com/g/%s/%s' % (size, size)
+
+        response = {
+            'image_src': image_src,
+        }
+
+        return HttpResponse(json.dumps(response), content_type='application/json')
+
+    return HttpResponseBadRequest('This url is not directly accessible')
+
 def home(request):
 
     ctx = RequestContext(request, {
